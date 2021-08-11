@@ -13,30 +13,40 @@
 <body onload="init()">
 
     <header class="main-header">
-        <div class="header-container">
+        <div class="header-container main-layout">
             <div class="logo">Memegen</div>
             <ul class="main-nav clean-list">
-                <li>Gallery</li>
+                <li><a href="" onclick="onShowGallery(event)">Gallery</a></li>
                 <li>Memes</li>
                 <li>About</li>
             </ul>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="gallery" hidden>GALLERY</div>
+    <main class="main-content main-layout">
+
+        <div class="gallery">
+        </div>
+
         <div class="create-meme">
             <div class="canvas-container">
-                <canvas></canvas>
+                <canvas> </canvas>
             </div>
-            <div class="meme-tools">TOOLS</div>
+
+            <div class="meme-tools">
+                <div class="meme-txt">
+                    <input type="text" class="txt" oninput="onSetLineTxt()">
+                </div>
+            </div>
+
         </div>
     </main>
 
     <footer>
-        <div class="footer-container">FOOTER</div>
+        <div class="footer-container main-layout">FOOTER</div>
     </footer>
 
+    <script src="js/service/img.service.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/controller/main.controller.js"></script>
 

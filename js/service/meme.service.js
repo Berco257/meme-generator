@@ -1,21 +1,37 @@
 'use strict';
 
-var gKeywords = { 'happy': 12, 'funny puk': 1 };
-var gImgs = [{ id: 1, url: 'img/popo.jpg', keywords: ['happy'] }];
-var gMeme = {
+let gKeywords = { 'happy': 12, 'funny puk': 1 };
+
+let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
         {
+            id: 1,
             txt: 'I never eat Falafel',
-            size: 20,
+            size: 40,
             align: 'left',
             color: 'red',
-            pos: { x: 0, y: 0 },
+            pos: { x: 40, y: 40 },
         }
     ],
 };
 
-function getSelectedImgId(){
+function getSelectedImgId() {
     return gMeme.selectedImgId;
+}
+
+function getLines() {
+    return gMeme.lines;
+}
+
+function setLineTxt(lineId, txt) {
+    const line = gMeme.lines.find(line => {
+        return line.id === lineId;
+    });
+    line.txt = txt;
+}
+
+function setMemeImg(imgId){
+    gMeme.selectedImgId = imgId;
 }

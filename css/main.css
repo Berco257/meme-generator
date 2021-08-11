@@ -12,32 +12,75 @@ body {
     margin: 0;
 }
 
+/* LAYOUT */
+
+.main-layout {
+    max-width: 800px;
+}
+
+.header-container, .main-content, .footer-container {
+    margin: auto;
+}
+
 /* HEADER */
 
 .main-header {
+    background-color: #ff7f00;
     border: 1px solid black;
+}
+
+.main-nav>li>a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* MAIN CONTENT */
+
+/* GALLERY */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    gap: 15px;
+}
+
+.gallery>img {
+    object-fit: cover;
+    width: 100%;
+}
+
+/* MEMES */
+
+.create-meme {
+    display: none;
+}
+
+.meme-tools {
+    flex: 1;
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* CANVAS */
+
+/* .canvas-container {
+    flex: 1;
+} */
+
+canvas {
+    display: block;
 }
 
 /* FOOTER */
 
 footer {
     border: 1px solid black;
-    /* position: absolute; */
     bottom: 0;
     width: 100%;
     text-align: center;
 }
 
-/* CANVAS */
-
-canvas {
-    display: block;
-    /* border: 1px solid black; */
-}
-
 /* HELPERS */
-
-/*LIST HELPERS */
 
 .clean-list {
     list-style-type: none;
