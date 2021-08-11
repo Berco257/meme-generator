@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+
+/* BASE */
+html{
+    height: 100vh;
+}
+body{
+    margin: 0;
+}
+
+/* HEADER */
+.main-header {
+    border: 1px solid black;
+}
+
+/* FOOTER */
+footer{
+    border: 1px solid black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* CANVAS */
+canvas{
+    display: block;
+    border: 1px solid black;
+}
+
+/* HELPERS */
+    /* list-helpers */
+    
+    .clean-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }

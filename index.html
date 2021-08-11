@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme generator</title>
+
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    
+
+<body onload="init()">
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">Memegen</div>
+            <ul class="main-nav clean-list">
+                <li>Gallery</li>
+                <li>Memes</li>
+                <li>About</li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="gallery" hidden>GALLERY</div>
+        <div class="create-meme">
+            <canvas class="canvas" width="400" height="400"></canvas>
+            <div class="meme-tools">TOOLS</div>
+        </div>
+    </main>
+
+    <footer>
+      <div class="footer-container">FOOTER</div>
+    </footer>
+
+    <script src="js/service/meme.service.js"></script>
+    <script src="js/controller/main.controller.js"></script>
+
 </body>
+
 </html>
