@@ -15,3 +15,7 @@ var gMeme = {
         }
     ],
 };
+
+function getSelectedImgId(){
+    return gMeme.selectedImgId;
+}
