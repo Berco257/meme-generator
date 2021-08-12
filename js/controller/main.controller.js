@@ -4,10 +4,11 @@ let gElCanvas;
 let gCtx;
 
 function init() {
-    renderGallery();
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
+    renderGallery();
     resizeCanvas();
+    addNewLine();
     renderCanvas();
 }
 
@@ -20,44 +21,45 @@ function renderGallery() {
 }
 
 function renderCanvas() {
-    // gCtx.save();
     var img = new Image();
-    img.src = `img/meme-imgs-square/${getSelectedImgId()}.jpg`;
+    img.src = `img/meme-imgs-square/${getSetSelectedImgId()}.jpg`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
         const lines = getLines();
         lines.forEach(line => {
-            drawText(line.txt, line.size, line.align, line.color, line.pos);
+            drawText(line);
         });
+        if(getSetSelectedLineIdx() !== -1) {
+            const txt = document.querySelector('.tool1 .txt').value = getSetLineTxt();
+        }
     }
-    // gCtx.restore();
 }
 
 function resizeCanvas() {
-    gElCanvas.width = 500;
-    gElCanvas.height = 500;
+    gElCanvas.width = 540;
+    gElCanvas.height = 540;
 }
 
-function drawText(txt, size, align, color, pos) {
-    gCtx.font = `${size}px Impact`;
-    // gCtx.textAlign = "center";
-    gCtx.fillStyle = color;
-    gCtx.fillText(txt, pos.x, pos.y);
+function drawText(line) {
+    gCtx.font = `${line.size}px impact`;
+    gCtx.textAlign = line.align;
+    gCtx.fillStyle = line.txtColor;
+    gCtx.fillText(line.txt, line.pos.x, line.pos.y);
     gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'black'
-    gCtx.strokeText(txt, pos.x, pos.y)
+    gCtx.strokeStyle = line.strokeColor;
+    gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
 }
 
 function onSetMemeImg(imgId) {
-    setMemeImg(imgId);
+    getSetSelectedImgId(imgId);
     document.querySelector('.gallery').style.display = 'none';
     renderCanvas();
     document.querySelector('.create-meme').style.display = 'flex';
 }
 
 function onSetLineTxt() {
-    const txt = document.querySelector('.meme-txt .txt').value;
-    setLineTxt(1, txt);
+    const txt = document.querySelector('.tool1 .txt').value;
+    getSetLineTxt(txt);
     renderCanvas();
 }
 
@@ -65,4 +67,33 @@ function onShowGallery(ev) {
     ev.preventDefault();
     document.querySelector('.gallery').style.display = 'grid';
     document.querySelector('.create-meme').style.display = 'none';
+}
+
+function onIncDecTxt(dif) {
+    IncDecTxt(dif);
+    renderCanvas();
+}
+
+function onAddLine(){
+    addNewLine();
+    renderCanvas();
+}
+
+function onMoveLineUpDown(dif) {
+    moveLineUpDown(dif);
+    renderCanvas();
+}
+
+function onSelectNextLine(){
+    selectNextLine();
+    const txt = document.querySelector('.tool1 .txt').value = getSetLineTxt();
+}
+
+function onRemoveLine(){
+    removeLine();
+    renderCanvas();
+}
+
+function getElCanvas(){
+    return gElCanvas;
 }

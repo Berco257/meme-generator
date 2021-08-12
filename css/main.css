@@ -2,6 +2,33 @@
     box-sizing: border-box;
 }
 
+/* FONTS */
+
+@font-face {
+    font-family: impact;
+    src: url(../font/impact/impact.ttf);
+}
+
+@font-face {
+    font-family: montserrat-thin;
+    src: url(../font/montserrat/Montserrat-Thin.ttf);
+}
+
+@font-face {
+    font-family: montserrat-regular;
+    src: url(../font/montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: montserrat-medium;
+    src: url(../font/montserrat/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: montserrat-bold;
+    src: url(../font/montserrat/Montserrat-Bold.ttf);
+}
+
 /* BASE */
 
 html {
@@ -15,7 +42,7 @@ body {
 /* LAYOUT */
 
 .main-layout {
-    max-width: 1100px;
+    max-width: 900px;
 }
 
 .header-container, .main-content, .footer-container {
@@ -28,15 +55,15 @@ body {
     background-color: #ff7f00;
 }
 
-.header-container{
+.header-container {
     justify-content: space-between;
 }
 
-.logo{
+.logo {
     padding: 20px 0;
 }
 
-.logo img{
+.logo img {
     height: 50px;
 }
 
@@ -44,6 +71,7 @@ body {
     align-items: center;
     gap: 25px;
     font-size: 1.875rem;
+    font-family: montserrat-regular;
 }
 
 .main-nav>li>a {
@@ -52,7 +80,8 @@ body {
 }
 
 /* MAIN CONTENT */
-.main-content{
+
+.main-content {
     margin-block-start: 20px;
     margin-block-end: 20px;
 }
@@ -82,8 +111,79 @@ body {
     flex: 1;
     border: 1px solid black;
     text-align: center;
+
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(6, 60px);
+    justify-content: center;
+    align-items: center;
 }
 
+.meme-tools>.tool1{
+    grid-row: 1/2;
+    grid-column: 1/-1;
+}
+
+.meme-tools>.tool1>input {
+    width: 93%;
+}
+
+.meme-tools>.tool12{
+    grid-row: 4/5;
+    grid-column: 1/4;
+}
+
+.meme-tools>.tool12>select{
+    width: 88%;
+}
+
+.meme-tools>.tool13{
+position: relative;
+}
+
+.meme-tools>.tool13>input{
+    position: absolute;
+    left: 10px;
+    width: 67%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.meme-tools>.tool14{
+position: relative;
+}
+
+.meme-tools>.tool14>input{
+    position: absolute;
+    left: 10px;
+    width: 67%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.meme-tools>.tool1>input, .meme-tools>.tool12>select{
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    outline: 0;
+}
+
+.meme-tools>div{
+    height: 40px;
+}
+
+.meme-tools>div>img{
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.meme-tools>*>*:not(input){
+    cursor: pointer;
+}
 /* CANVAS */
 
 /* .canvas-container {
