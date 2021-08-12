@@ -1,28 +1,51 @@
 'use strict';
+
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 let gIsUserDrag = false;
+let gLastEvPos;
+let gCurrEvPos;
 
 function onDown(ev) {
-    const pos = getEvPos(ev);
-    toggleDrag(true);
+    gCurrEvPos = getEvPos(ev);
+    const line = getLineBelow();
+    if (!line) return;
+    setLineDrag(true);
+    getSetSelectedLineIdx(getLineIdxBelow());
+    renderCanvas();
 }
 
 function onMove(ev) {
-    const pos = getEvPos(ev);
-    if (isOnObject(pos)) getElCanvas().style.cursor = 'grab';
-    else getElCanvas().style.cursor = 'auto';
+    gLastEvPos = gCurrEvPos;
+    gCurrEvPos = getEvPos(ev);
+    const line = getLineBelow();
+
+    if (!line) {
+        getElCanvas().style.cursor = 'auto';
+        return;
+    }
+    getElCanvas().style.cursor = 'pointer';
+    if (!gIsUserDrag) return;
+    const difPos = { difX: gCurrEvPos.x - gLastEvPos.x, difY: gCurrEvPos.y - gLastEvPos.y };
+    setLinePos(difPos);
+    renderCanvas();
 }
 
 function onUp() {
-    toggleDrag(false);
+    setLineDrag(false);
 }
 
-function isOnObject(pos) {
-    return getLines().find(line => {
-        const area = getLineArea(line);
-        return ((pos.x >= area.xPoint && pos.x <= area.xPoint + area.width) &&
-            (pos.y >= area.yPoint && pos.y <= area.yPoint + area.height))
-    });
+function getLineBelow() {
+    return getLines().find(isLineBelow);
+}
+
+function getLineIdxBelow() {
+    return getLines().findIndex(isLineBelow);
+}
+
+function isLineBelow(line){
+    const area = getLineArea(line);
+    return ((gCurrEvPos.x >= area.xPoint && gCurrEvPos.x <= area.xPoint + area.width) &&
+        (gCurrEvPos.y >= area.yPoint && gCurrEvPos.y <= area.yPoint + area.height));
 }
 
 function getEvPos(ev) {
@@ -41,10 +64,6 @@ function getEvPos(ev) {
     return pos
 }
 
-function toggleDrag(toggle) {
-    gIsUserDrag = toggle;
-}
-
-function isUserDrag() {
-    return gIsUserDrag;
+function setLineDrag(isDrag) {
+    gIsUserDrag = isDrag;
 }

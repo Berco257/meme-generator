@@ -32,7 +32,7 @@ function renderCanvas() {
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
-            drawSelectedLine();
+            drawSelectedLineFrame();
         }
     }
 }
@@ -45,7 +45,7 @@ function renderTools() {
 }
 
 function resizeCanvas() {
-    const elCanvasContainer = document.querySelector('.canvas-container');
+    // const elCanvasContainer = document.querySelector('.canvas-container');
     gElCanvas.width = 540;
     gElCanvas.height = 540;
 }
@@ -61,13 +61,19 @@ function drawText(line) {
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
 }
 
-function drawSelectedLine() {
+function drawSelectedLineFrame() {
     const area = getLineArea(getLine())
     gCtx.beginPath();
     gCtx.lineWidth = 2;
     gCtx.rect(area.xPoint, area.yPoint, area.width, area.height)
     gCtx.strokeStyle = 'red';
     gCtx.stroke();
+}
+
+function onShowGallery(ev) {
+    ev.preventDefault();
+    document.querySelector('.gallery').style.display = 'grid';
+    document.querySelector('.create-meme').style.display = 'none';
 }
 
 function onSetMemeImg(imgId) {
@@ -81,12 +87,6 @@ function onSetLineTxt() {
     const txt = document.querySelector('.tool1 .txt').value;
     getSetLineTxt(txt);
     renderCanvas();
-}
-
-function onShowGallery(ev) {
-    ev.preventDefault();
-    document.querySelector('.gallery').style.display = 'grid';
-    document.querySelector('.create-meme').style.display = 'none';
 }
 
 function onIncDecTxt(dif) {
@@ -139,7 +139,7 @@ function disableEnableTxtInput(toggle) {
     document.querySelector('.tool1 .txt').disabled = toggle;
 }
 
-function getLineArea(line){
+function getLineArea(line) {
     gCtx.font = `${line.size}px ${line.font}`;
     const width = gCtx.measureText(line.txt).width + 20;
     const height = line.size + 10
@@ -148,7 +148,7 @@ function getLineArea(line){
 
     switch (line.align) {
         case 'left':
-            xPoint = line.pos.x - 10// - ((width - 20) / 2) - 5;
+            xPoint = line.pos.x - 10;
             yPoint = line.pos.y - (line.size / 2) - 5;
             break;
         case 'center':
@@ -160,7 +160,7 @@ function getLineArea(line){
             yPoint = line.pos.y - (line.size / 2) - 5;
             break;
     }
-    return {xPoint, yPoint, width, height};
+    return { xPoint, yPoint, width, height };
 }
 
 function getElCanvas() {

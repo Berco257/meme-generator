@@ -47,6 +47,11 @@ function removeLine() {
     getSetSelectedLineIdx(-1);
 }
 
+function setLinePos(difPos) {
+    getLine().pos.x += difPos.difX;
+    getLine().pos.y += difPos.difY;
+}
+
 function setLineAlign(align) {
     if (getSetSelectedLineIdx() === -1) return;
     switch (align) {
@@ -96,11 +101,6 @@ function getSetSelectedLineIdx(idx) {
     gMeme.selectedLineIdx = idx;
 }
 
-function getLineWidth() {
-    gCtx.font = `${getLine().size}px ${getLine().font}`;
-    return gCtx.measureText(getLine().txt).width;
-}
-
 function getLines() {
     return gMeme.lines;
 }
@@ -108,5 +108,3 @@ function getLines() {
 function getLine() {
     return gMeme.lines[getSetSelectedLineIdx()];
 }
-
-
