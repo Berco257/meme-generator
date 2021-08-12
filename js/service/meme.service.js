@@ -1,6 +1,6 @@
 'use strict';
 
-let gKeywords = { 'happy': 12, 'funny puk': 1 };
+// let gKeywords = { 'happy': 12, 'funny puk': 1 };
 
 let gMeme = {
     selectedImgId: 1,
@@ -16,9 +16,9 @@ function addNewLine(txt) {
         align: 'center',
         txtColor: '#ffffff',
         strokeColor: '#000000',
-        pos: { x: getElCanvas().width / 2, y: 21 },
+        pos: { x: getElCanvas().width / 2, y: 31 },
     };
-    if (gMeme.lines.length === 1) newLine.pos.y = getElCanvas().height - 21;
+    if (gMeme.lines.length === 1) newLine.pos.y = getElCanvas().height - 31;
     else if (gMeme.lines.length > 1) newLine.pos.y = getElCanvas().height / 2;
     gMeme.lines.push(newLine);
     getSetSelectedLineIdx(gMeme.lines.length - 1);
@@ -51,26 +51,31 @@ function setLineAlign(align) {
     if (getSetSelectedLineIdx() === -1) return;
     switch (align) {
         case 'left':
-            getLine().pos.x = 0;
+            getLine().pos.x = 15;
             break;
         case 'center':
             getLine().pos.x = getElCanvas().width / 2;
             break;
         case 'right':
-            getLine().pos.x = getElCanvas().width;
+            getLine().pos.x = getElCanvas().width - 15;
             break;
     }
     getLine().align = align;
 }
 
-function setLineStrokeColor(color){
+function setLineStrokeColor(color) {
     if (getSetSelectedLineIdx() === -1) return;
     getLine().strokeColor = color;
 }
 
-function setLineTxtColor(color){
+function setLineTxtColor(color) {
     if (getSetSelectedLineIdx() === -1) return;
     getLine().txtColor = color;
+}
+
+function setLineFont(font) {
+    if (getSetSelectedLineIdx() === -1) return;
+    getLine().font = font;
 }
 
 function getSetLineTxt(txt) {

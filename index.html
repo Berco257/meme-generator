@@ -27,7 +27,7 @@
         <div class="gallery"></div>
         <div class="create-meme">
             <div class="canvas-container">
-                <canvas></canvas>
+                <canvas width="400" height="400"></canvas>
             </div>
 
             <div class="meme-tools">
@@ -46,19 +46,22 @@
                         onclick="onIncDecTxt(1)"></div>
                 <div class="tool8"><img src="img/icons/decrease-font-icon.png" alt="Decrease text" title="Decrease text"
                         onclick="onIncDecTxt(-1)"></div>
-                <div class="tool9"><img src="img/icons/align-to-left.png" alt="Alignment left" title="Alignment left" onclick="onSetLineAlign('left')">
+                <div class="tool9"><img src="img/icons/align-to-left.png" alt="Alignment left" title="Alignment left"
+                        onclick="onSetLineAlign('left')">
                 </div>
                 <div class="tool10"><img src="img/icons/center-text-alignment.png" alt="Alignment center"
                         title="Alignment center" onclick="onSetLineAlign('center')"></div>
                 <div class="tool11"><img src="img/icons/align-to-right.png" alt="Alignment right"
-                        title="Alignment right"  onclick="onSetLineAlign('right')"></div>
-                <div class="tool12"><select  title="Text font">
-                        <option value="en">Ariel</option>
-                        <option value="he">Tahoma</option>
-                        <option value="he">Tahoma2</option>
-                        <option value="he">Tahoma3</option>
-                        <option value="he">Tahoma4</option>
-                        <option value="he">Tahoma5</option>
+                        title="Alignment right" onclick="onSetLineAlign('right')"></div>
+                <div class="tool12"><select title="Text font" onchange="onSetLineFont(this)">
+                        <option value="alef">Alef(he)</option>
+                        <option value="assistant">Assistant(he)</option>
+                        <option value="impact">Impact</option>
+                        <option value="karantina">Karantina(he)</option>
+                        <option value="lobster">Lobster</option>
+                        <option value="rubik">Rubik(he)</option>
+                        <option value="titillium-web">Titillium web</option>
+                        <option value="varela-round">Varela round(he)</option>
                     </select>
                 </div>
                 <div class="tool13">
@@ -79,6 +82,8 @@
 
     <script src="js/service/img.service.js"></script>
     <script src="js/service/meme.service.js"></script>
+    <script src="js/controller/listener.controller.js"></script>
+    <script src="js/controller/mouse-touch.controller.js"></script>
     <script src="js/controller/main.controller.js"></script>
 
 </body>

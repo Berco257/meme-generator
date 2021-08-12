@@ -10,6 +10,7 @@ function init() {
     resizeCanvas();
     addNewLine();
     renderCanvas();
+    addListeners();
 }
 
 function renderGallery() {
@@ -29,29 +30,44 @@ function renderCanvas() {
         lines.forEach(line => {
             drawText(line);
         });
-        if (getSetSelectedLineIdx() !== -1) renderTools();
+        if (getSetSelectedLineIdx() !== -1) {
+            renderTools();
+            drawSelectedLine();
+        }
     }
 }
 
 function renderTools() {
     document.querySelector('.tool1 .txt').value = getSetLineTxt();
+    document.querySelector('.tool12 select').value = getLine().font;
     document.querySelector('.tool13 input').value = getLine().strokeColor;
+    document.querySelector('.tool14 input').value = getLine().txtColor;
 }
 
 function resizeCanvas() {
+    const elCanvasContainer = document.querySelector('.canvas-container');
     gElCanvas.width = 540;
     gElCanvas.height = 540;
 }
 
 function drawText(line) {
-    gCtx.textBaseline = "middle";
     gCtx.font = `${line.size}px ${line.font}`;
+    gCtx.textBaseline = "middle";
     gCtx.textAlign = line.align;
     gCtx.fillStyle = line.txtColor;
     gCtx.fillText(line.txt, line.pos.x, line.pos.y);
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = line.strokeColor;
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
+}
+
+function drawSelectedLine() {
+    const area = getLineArea(getLine())
+    gCtx.beginPath();
+    gCtx.lineWidth = 2;
+    gCtx.rect(area.xPoint, area.yPoint, area.width, area.height)
+    gCtx.strokeStyle = 'red';
+    gCtx.stroke();
 }
 
 function onSetMemeImg(imgId) {
@@ -90,8 +106,8 @@ function onMoveLineUpDown(dif) {
 
 function onSelectNextLine() {
     if (!selectNextLine()) return;
-    console.log('kkkk');
     const txt = document.querySelector('.tool1 .txt').value = getSetLineTxt();
+    renderCanvas();
 }
 
 function onRemoveLine() {
@@ -114,9 +130,37 @@ function onSetLineTxtColor(el) {
     setLineTxtColor(el.value);
     renderCanvas();
 }
+function onSetLineFont(el) {
+    setLineFont(el.value);
+    renderCanvas();
+}
 
 function disableEnableTxtInput(toggle) {
     document.querySelector('.tool1 .txt').disabled = toggle;
+}
+
+function getLineArea(line){
+    gCtx.font = `${line.size}px ${line.font}`;
+    const width = gCtx.measureText(line.txt).width + 20;
+    const height = line.size + 10
+    let xPoint;
+    let yPoint;
+
+    switch (line.align) {
+        case 'left':
+            xPoint = line.pos.x - 10// - ((width - 20) / 2) - 5;
+            yPoint = line.pos.y - (line.size / 2) - 5;
+            break;
+        case 'center':
+            xPoint = line.pos.x - ((width - 20) / 2) - 10;
+            yPoint = line.pos.y - (line.size / 2) - 5;
+            break;
+        case 'right':
+            xPoint = line.pos.x - width + 10;
+            yPoint = line.pos.y - (line.size / 2) - 5;
+            break;
+    }
+    return {xPoint, yPoint, width, height};
 }
 
 function getElCanvas() {

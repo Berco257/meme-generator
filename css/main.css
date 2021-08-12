@@ -5,11 +5,6 @@
 /* FONTS */
 
 @font-face {
-    font-family: impact;
-    src: url(../font/impact/impact.ttf);
-}
-
-@font-face {
     font-family: montserrat-thin;
     src: url(../font/montserrat/Montserrat-Thin.ttf);
 }
@@ -27,6 +22,46 @@
 @font-face {
     font-family: montserrat-bold;
     src: url(../font/montserrat/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: impact;
+    src: url(../font/impact/impact.ttf);
+}
+
+@font-face {
+    font-family: lobster;
+    src: url(../font/lobster/lobster-regular.ttf);
+}
+
+@font-face {
+    font-family: titillium-web;
+    src: url(../font/titillium-web/titillium-web-regular.ttf);
+}
+
+@font-face {
+    font-family: alef;
+    src: url(../font/he/alef/Alef-Bold.ttf);
+}
+
+@font-face {
+    font-family: assistant;
+    src: url(../font/he/assistant/Assistant-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: karantina;
+    src: url(../font/he/karantina/Karantina-Bold.ttf);
+}
+
+@font-face {
+    font-family: rubik;
+    src: url(../font/he/rubik/rubik-regular.ttf);
+}
+
+@font-face {
+    font-family: varela-round;
+    src: url(../font/he/varela-round/varela-round-regular.ttf);
 }
 
 /* BASE */
@@ -184,11 +219,34 @@ position: relative;
 .meme-tools>*>*:not(input){
     cursor: pointer;
 }
-/* CANVAS */
 
-/* .canvas-container {
-    flex: 1;
-} */
+/* SELECT FONTS */
+
+.tool12>select>:nth-child(1){
+    font-family: alef;
+}
+.tool12>select>:nth-child(2){
+    font-family: assistant;
+}
+.tool12>select>:nth-child(3){
+    font-family: impact;
+}
+.tool12>select>:nth-child(4){
+    font-family: karantina;
+}
+.tool12>select>:nth-child(5){
+    font-family: lobster;
+}
+.tool12>select>:nth-child(6){
+    font-family: rubik;
+}
+.tool12>select>:nth-child(7){
+    font-family: titillium-web;
+}
+.tool12>select>:nth-child(8){
+    font-family: varela-round;
+}
+/* CANVAS */
 
 canvas {
     display: block;
