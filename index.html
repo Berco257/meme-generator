@@ -32,18 +32,27 @@
 
             <div class="meme-tools">
                 <div class="tool1"><input type="text" class="txt" oninput="onSetLineTxt()"></div>
-                <div class="tool2"><img src="img/icons/down-arrow.png" alt="Move text line down" title="Move text line down" onclick="onMoveLineUpDown(1)"></div>
-                <div class="tool3"><img src="img/icons/up-arrow.png" alt="Move text line up" title="Move text line up" onclick="onMoveLineUpDown(-1)"></div>
+                <div class="tool2"><img src="img/icons/down-arrow.png" alt="Move text line down"
+                        title="Move text line down" onclick="onMoveLineUpDown(1)"></div>
+                <div class="tool3"><img src="img/icons/up-arrow.png" alt="Move text line up" title="Move text line up"
+                        onclick="onMoveLineUpDown(-1)"></div>
                 <div class="tool4"><img src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"
                         alt="Select next text line" title="Select next text line" onclick="onSelectNextLine()"></div>
-                <div class="tool5"><img src="img/icons/add.png" alt="Add text line" title="Add text line" onclick="onAddLine()"></div>
-                <div class="tool6"><img src="img/icons/trash.png" alt="Delete text line" title="Delete text line" onclick="onRemoveLine()"></div>
-                <div class="tool7"><img src="img/icons/increase-font-icon.png" alt="Increase text" title="Increase text" onclick="onIncDecTxt(1)"></div>
-                <div class="tool8"><img src="img/icons/decrease-font-icon.png" alt="Decrease text" title="Decrease text" onclick="onIncDecTxt(-1)"></div>
-                <div class="tool9"><img src="img/icons/align-to-left.png" alt="Alignment left" title="Alignment left"></div>
-                <div class="tool10"><img src="img/icons/center-text-alignment.png" alt="Alignment center" title="Alignment center"></div>
-                <div class="tool11"><img src="img/icons/align-to-right.png" alt="Alignment right" title="Alignment right"></div>
-                <div class="tool12"><select>
+                <div class="tool5"><img src="img/icons/add.png" alt="Add text line" title="Add text line"
+                        onclick="onAddLine()"></div>
+                <div class="tool6"><img src="img/icons/trash.png" alt="Delete text line" title="Delete text line"
+                        onclick="onRemoveLine()"></div>
+                <div class="tool7"><img src="img/icons/increase-font-icon.png" alt="Increase text" title="Increase text"
+                        onclick="onIncDecTxt(1)"></div>
+                <div class="tool8"><img src="img/icons/decrease-font-icon.png" alt="Decrease text" title="Decrease text"
+                        onclick="onIncDecTxt(-1)"></div>
+                <div class="tool9"><img src="img/icons/align-to-left.png" alt="Alignment left" title="Alignment left" onclick="onSetLineAlign('left')">
+                </div>
+                <div class="tool10"><img src="img/icons/center-text-alignment.png" alt="Alignment center"
+                        title="Alignment center" onclick="onSetLineAlign('center')"></div>
+                <div class="tool11"><img src="img/icons/align-to-right.png" alt="Alignment right"
+                        title="Alignment right"  onclick="onSetLineAlign('right')"></div>
+                <div class="tool12"><select  title="Text font">
                         <option value="en">Ariel</option>
                         <option value="he">Tahoma</option>
                         <option value="he">Tahoma2</option>
@@ -53,12 +62,12 @@
                     </select>
                 </div>
                 <div class="tool13">
-                    <img src="img/icons/text-stroke.png" alt="Stroke color" title="Stroke color" onclick="onSetStrokeColor()">
-                    <input type="color">
+                    <img src="img/icons/text-stroke.png" alt="Stroke color">
+                    <input type="color" title="Stroke color" oninput="onSetLineStrokeColor(this)">
                 </div>
                 <div class="tool14">
-                    <img src="img/icons/paint-board-and-brush.png" alt="Text color" title="Text color">
-                    <input type="color">
+                    <img src="img/icons/paint-board-and-brush.png" alt="Text color">
+                    <input type="color" title="Text color" oninput="onSetLineTxtColor(this)">
                 </div>
             </div>
         </div>

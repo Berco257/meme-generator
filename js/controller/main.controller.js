@@ -29,10 +29,13 @@ function renderCanvas() {
         lines.forEach(line => {
             drawText(line);
         });
-        if(getSetSelectedLineIdx() !== -1) {
-            const txt = document.querySelector('.tool1 .txt').value = getSetLineTxt();
-        }
+        if (getSetSelectedLineIdx() !== -1) renderTools();
     }
+}
+
+function renderTools() {
+    document.querySelector('.tool1 .txt').value = getSetLineTxt();
+    document.querySelector('.tool13 input').value = getLine().strokeColor;
 }
 
 function resizeCanvas() {
@@ -41,7 +44,8 @@ function resizeCanvas() {
 }
 
 function drawText(line) {
-    gCtx.font = `${line.size}px impact`;
+    gCtx.textBaseline = "middle";
+    gCtx.font = `${line.size}px ${line.font}`;
     gCtx.textAlign = line.align;
     gCtx.fillStyle = line.txtColor;
     gCtx.fillText(line.txt, line.pos.x, line.pos.y);
@@ -74,7 +78,7 @@ function onIncDecTxt(dif) {
     renderCanvas();
 }
 
-function onAddLine(){
+function onAddLine() {
     addNewLine();
     renderCanvas();
 }
@@ -84,16 +88,37 @@ function onMoveLineUpDown(dif) {
     renderCanvas();
 }
 
-function onSelectNextLine(){
-    selectNextLine();
+function onSelectNextLine() {
+    if (!selectNextLine()) return;
+    console.log('kkkk');
     const txt = document.querySelector('.tool1 .txt').value = getSetLineTxt();
 }
 
-function onRemoveLine(){
+function onRemoveLine() {
     removeLine();
+    const txt = document.querySelector('.tool1 .txt').value = '';
     renderCanvas();
 }
 
-function getElCanvas(){
+function onSetLineAlign(align) {
+    setLineAlign(align);
+    renderCanvas();
+}
+
+function onSetLineStrokeColor(el) {
+    setLineStrokeColor(el.value);
+    renderCanvas();
+}
+
+function onSetLineTxtColor(el) {
+    setLineTxtColor(el.value);
+    renderCanvas();
+}
+
+function disableEnableTxtInput(toggle) {
+    document.querySelector('.tool1 .txt').disabled = toggle;
+}
+
+function getElCanvas() {
     return gElCanvas;
 }
