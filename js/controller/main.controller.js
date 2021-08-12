@@ -133,6 +133,10 @@ function onSetLineTxtColor(el) {
 function onSetLineFont(el) {
     setLineFont(el.value);
     renderCanvas();
+    // render with timeout to fix loading fonts prob
+    setTimeout(() => {
+        renderCanvas();
+    }, 50);
 }
 
 function disableEnableTxtInput(toggle) {

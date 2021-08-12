@@ -222,7 +222,7 @@ position: relative;
 
 /* SELECT FONTS */
 
-.tool12>select>:nth-child(1){
+/* .tool12>select>:nth-child(1){
     font-family: alef;
 }
 .tool12>select>:nth-child(2){
@@ -245,7 +245,8 @@ position: relative;
 }
 .tool12>select>:nth-child(8){
     font-family: varela-round;
-}
+} */
+
 /* CANVAS */
 
 canvas {
