@@ -136,6 +136,12 @@ body {
     object-fit: cover;
     width: 100%;
     cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px #000000;
+}
+
+.gallery>img:hover {
+    box-shadow: 0 0 15px 5px #995c1c;
 }
 
 /* MEMES TOOLS*/
@@ -274,6 +280,7 @@ body {
 canvas {
     display: block;
     box-shadow: 0 0 20px 0px;
+    border-radius: 10px;
 }
 
 /* FOOTER */
