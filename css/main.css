@@ -285,6 +285,10 @@ body.screen-active .screen {
     background-color: #7fff66
 }
 
+.meme-tools>.tool16>a>img{
+    border: 0;
+    padding: 0;
+}
 /* SELECT FONTS */
 
 .tool12>select>:nth-child(1) {

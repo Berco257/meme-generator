@@ -31,7 +31,7 @@ function renderCanvas() {
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
-            gData = getElCanvas().toDataURL();
+            gData = getElCanvas().toDataURL("image/jpeg");
             getLines().unshift(getLines().splice(getSetSelectedLineIdx(), 1)[0]);
             getSetSelectedLineIdx(0);
             drawText(getSelectedLine());
@@ -162,9 +162,6 @@ function onSetLineTxtColor(el) {
 }
 function onSetLineFont(el) {
     setLineFont(el.value);
-    const selectedLineIdx = getSetSelectedLineIdx();
-    getSetSelectedLineIdx(-1);
-    getSetSelectedLineIdx(selectedLineIdx);
     renderCanvas();
 }
 
