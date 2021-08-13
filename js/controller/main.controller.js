@@ -8,10 +8,7 @@ function init() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery();
-    // resizeCanvas();
-    // addNewLine();
     addListeners();
-    // renderCanvas();
 }
 
 function renderGallery() {
@@ -35,7 +32,9 @@ function renderCanvas() {
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
             gData = getElCanvas().toDataURL();
-            drawText(getLine());
+            getLines().unshift(getLines().splice(getSetSelectedLineIdx(), 1)[0]);
+            getSetSelectedLineIdx(0);
+            drawText(getSelectedLine());
             drawSelectedLineFrame();
         }
     }
@@ -43,9 +42,9 @@ function renderCanvas() {
 
 function renderTools() {
     document.querySelector('.tool1 .txt').value = getSetLineTxt();
-    document.querySelector('.tool12 select').value = getLine().font;
-    document.querySelector('.tool13 input').value = getLine().strokeColor;
-    document.querySelector('.tool14 input').value = getLine().txtColor;
+    document.querySelector('.tool12 select').value = getSelectedLine().font;
+    document.querySelector('.tool13 input').value = getSelectedLine().strokeColor;
+    document.querySelector('.tool14 input').value = getSelectedLine().txtColor;
 }
 
 function resizeCanvas() {
@@ -66,7 +65,7 @@ function drawText(line) {
 }
 
 function drawSelectedLineFrame() {
-    const area = getLineArea(getLine())
+    const area = getLineArea(getSelectedLine())
     gCtx.beginPath();
     gCtx.lineWidth = 2;
     gCtx.rect(area.xPoint, area.yPoint, area.width, area.height)
@@ -163,6 +162,9 @@ function onSetLineTxtColor(el) {
 }
 function onSetLineFont(el) {
     setLineFont(el.value);
+    const selectedLineIdx = getSetSelectedLineIdx();
+    getSetSelectedLineIdx(-1);
+    getSetSelectedLineIdx(selectedLineIdx);
     renderCanvas();
 }
 

@@ -31,7 +31,7 @@ function IncDecTxt(dif) {
 
 function moveLineUpDown(dif) {
     if (getSetSelectedLineIdx() === -1) return;
-    getLine().pos.y += (5 * dif);
+    getSelectedLine().pos.y += (5 * dif);
 }
 
 function selectNextLine() {
@@ -48,45 +48,45 @@ function removeLine() {
 }
 
 function setLinePos(difPos) {
-    getLine().pos.x += difPos.difX;
-    getLine().pos.y += difPos.difY;
+    getSelectedLine().pos.x += difPos.difX;
+    getSelectedLine().pos.y += difPos.difY;
 }
 
 function setLineAlign(align) {
     if (getSetSelectedLineIdx() === -1) return;
     switch (align) {
         case 'left':
-            getLine().pos.x = 15;
+            getSelectedLine().pos.x = 15;
             break;
         case 'center':
-            getLine().pos.x = getElCanvas().width / 2;
+            getSelectedLine().pos.x = getElCanvas().width / 2;
             break;
         case 'right':
-            getLine().pos.x = getElCanvas().width - 15;
+            getSelectedLine().pos.x = getElCanvas().width - 15;
             break;
     }
-    getLine().align = align;
+    getSelectedLine().align = align;
 }
 
 function setLineStrokeColor(color) {
     if (getSetSelectedLineIdx() === -1) return;
-    getLine().strokeColor = color;
+    getSelectedLine().strokeColor = color;
 }
 
 function setLineTxtColor(color) {
     if (getSetSelectedLineIdx() === -1) return;
-    getLine().txtColor = color;
+    getSelectedLine().txtColor = color;
 }
 
 function setLineFont(font) {
     if (getSetSelectedLineIdx() === -1) return;
-    getLine().font = font;
+    getSelectedLine().font = font;
 }
 
 function getSetLineTxt(txt) {
     if (getSetSelectedLineIdx() === -1) return;
-    if (txt === undefined) return getLine().txt;
-    getLine().txt = txt;
+    if (txt === undefined) return getSelectedLine().txt;
+    getSelectedLine().txt = txt;
 }
 
 function getSetSelectedImgId(imgId) {
@@ -105,6 +105,6 @@ function getLines() {
     return gMeme.lines;
 }
 
-function getLine() {
+function getSelectedLine() {
     return gMeme.lines[getSetSelectedLineIdx()];
 }
