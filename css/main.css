@@ -224,7 +224,7 @@ body.screen-active .screen {
     padding: 3px;
 }
 
-.meme-tools>*>*:not(input) {
+.meme-tools>*>*:not(input), .screen {
     cursor: pointer;
 }
 
