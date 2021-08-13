@@ -28,12 +28,14 @@ function renderCanvas() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
         const lines = getLines();
-        lines.forEach(line => {
+        lines.forEach((line, idx) => {
+            if (idx === getSetSelectedLineIdx) return;
             drawText(line);
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
             gData = getElCanvas().toDataURL();
+            drawText(getLine());
             drawSelectedLineFrame();
         }
     }
@@ -76,6 +78,30 @@ function onShowGallery(ev) {
     ev.preventDefault();
     document.querySelector('.gallery').style.display = 'grid';
     document.querySelector('.create-meme').style.display = 'none';
+}
+
+function onOpenMenu() {
+    const elMainNav = document.querySelector('.main-nav');
+    elMainNav.style.right = '0';
+    const elOpenMenuBtn = document.querySelector('.open-menu');
+    elOpenMenuBtn.style.opacity = 0;
+    const elCloseMenuBtn = document.querySelector('.main-nav>li:first-child>a');
+    elCloseMenuBtn.style.transform = "rotate(180deg)";
+    toggleScreen();
+}
+
+function onCloseMenu() {
+    const elMainNav = document.querySelector('.main-nav');
+    elMainNav.style.right = '-200px';
+    const elOpenMenuBtn = document.querySelector('.open-menu');
+    elOpenMenuBtn.style.opacity = 1;
+    const elCloseMenuBtn = document.querySelector('.main-nav>li:first-child>a');
+    elCloseMenuBtn.style.transform = "rotate(-180deg)";
+    toggleScreen();
+}
+
+function toggleScreen() {
+    document.body.classList.toggle('screen-active');
 }
 
 function onSetMemeImg(imgId) {

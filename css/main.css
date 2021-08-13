@@ -85,6 +85,26 @@ body {
     max-width: 650px;
 }
 
+/* SCREEN */
+
+.screen {
+    position: fixed;
+    inset: 0;
+    background-color: #0000006e;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+}
+
+.screen, .open-menu{
+    z-index: 5
+}
+
+body.screen-active .screen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* HEADER */
 
 .main-header {
@@ -105,16 +125,46 @@ body {
 }
 
 .main-nav {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    /* לשים ב 0*/
+    right: -200px;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
     font-size: 1.875rem;
     font-family: montserrat-regular;
-    display: none;
+    background-color: #ff9a02e0;
+    box-shadow: -10px 0 20px 0 #322c2c;
+    transition: 0.4s;
 }
 
-.main-nav>li>a {
+.main-nav>li:first-child {
+    height: 94px;
+    align-items: center;
+    font-size: 3.5rem;
+}
+
+.main-nav>li:not(:first-child)>a {
     text-decoration: none;
     color: #ffffff;
+}
+
+.main-nav>li:first-child>a {
+    text-decoration: none;
+    color: black;
+    transition: 1s;
+}
+
+.open-menu {
+    font-size: 3.5rem;
+    color: #000000;
+    align-self: center;
+    cursor: pointer;
+    transition: 1s;
 }
 
 /* MAIN CONTENT */
@@ -314,7 +364,25 @@ footer {
         padding-inline-end: 0;
     }
     .main-nav {
-        display: flex;
+        flex-direction: unset;
+        width: unset;
+        height: unset;
+        position: unset;
+        top: unset;
+        right: unset;
+        align-items: center;
+        gap: 25px;
+        font-size: 1.875rem;
+        font-family: montserrat-regular;
+        background-color: unset;
+        box-shadow: unset;
+        transition: 0.4s;
+    }
+    .main-nav>li:first-child {
+        display: none;
+    }
+    .open-menu {
+        display: none;
     }
     .canvas-container {
         width: 350px;
