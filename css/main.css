@@ -146,7 +146,6 @@ body {
     flex: 1;
     border: 1px solid black;
     text-align: center;
-
     display: grid;
     grid-template-columns: repeat(5, 60px);
     grid-template-rows: repeat(6, 60px);
@@ -154,7 +153,22 @@ body {
     align-items: center;
 }
 
-.meme-tools>.tool1{
+.meme-tools>div {
+    height: 40px;
+}
+
+.meme-tools>div img {
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.meme-tools>*>*:not(input) {
+    cursor: pointer;
+}
+
+.meme-tools>.tool1 {
     grid-row: 1/2;
     grid-column: 1/-1;
 }
@@ -163,20 +177,20 @@ body {
     width: 93%;
 }
 
-.meme-tools>.tool12{
+.meme-tools>.tool12 {
     grid-row: 4/5;
     grid-column: 1/4;
 }
 
-.meme-tools>.tool12>select{
+.meme-tools>.tool12>select {
     width: 88%;
 }
 
-.meme-tools>.tool13{
-position: relative;
+.meme-tools>.tool13 {
+    position: relative;
 }
 
-.meme-tools>.tool13>input{
+.meme-tools>.tool13>input {
     position: absolute;
     left: 10px;
     width: 67%;
@@ -185,11 +199,11 @@ position: relative;
     cursor: pointer;
 }
 
-.meme-tools>.tool14{
-position: relative;
+.meme-tools>.tool14 {
+    position: relative;
 }
 
-.meme-tools>.tool14>input{
+.meme-tools>.tool14>input {
     position: absolute;
     left: 10px;
     width: 67%;
@@ -198,54 +212,50 @@ position: relative;
     cursor: pointer;
 }
 
-.meme-tools>.tool1>input, .meme-tools>.tool12>select{
+.meme-tools>.tool1>input, .meme-tools>.tool12>select {
     height: 100%;
     border: 1px solid black;
     border-radius: 8px;
     outline: 0;
 }
 
-.meme-tools>div{
-    height: 40px;
-}
-
-.meme-tools>div>img{
-    height: 100%;
-    border: 1px solid black;
-    border-radius: 8px;
-    padding: 3px;
-}
-
-.meme-tools>*>*:not(input){
-    cursor: pointer;
+.meme-tools>.tool15>a>img {
+    background-color: #71bae3;
 }
 
 /* SELECT FONTS */
 
-/* .tool12>select>:nth-child(1){
+.tool12>select>:nth-child(1) {
     font-family: alef;
 }
-.tool12>select>:nth-child(2){
+
+.tool12>select>:nth-child(2) {
     font-family: assistant;
 }
-.tool12>select>:nth-child(3){
+
+.tool12>select>:nth-child(3) {
     font-family: impact;
 }
-.tool12>select>:nth-child(4){
+
+.tool12>select>:nth-child(4) {
     font-family: karantina;
 }
-.tool12>select>:nth-child(5){
+
+.tool12>select>:nth-child(5) {
     font-family: lobster;
 }
-.tool12>select>:nth-child(6){
+
+.tool12>select>:nth-child(6) {
     font-family: rubik;
 }
-.tool12>select>:nth-child(7){
+
+.tool12>select>:nth-child(7) {
     font-family: titillium-web;
 }
-.tool12>select>:nth-child(8){
+
+.tool12>select>:nth-child(8) {
     font-family: varela-round;
-} */
+}
 
 /* CANVAS */
 

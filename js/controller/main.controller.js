@@ -2,6 +2,7 @@
 
 let gElCanvas;
 let gCtx;
+let gData;
 
 function init() {
     gElCanvas = document.querySelector('canvas');
@@ -32,6 +33,7 @@ function renderCanvas() {
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
+            gData = getElCanvas().toDataURL();
             drawSelectedLineFrame();
         }
     }
@@ -133,10 +135,10 @@ function onSetLineTxtColor(el) {
 function onSetLineFont(el) {
     setLineFont(el.value);
     renderCanvas();
-    // render with timeout to fix loading fonts prob
-    setTimeout(() => {
-        renderCanvas();
-    }, 50);
+}
+
+function onDownloadImg(elLink) {
+    elLink.href = gData;
 }
 
 function disableEnableTxtInput(toggle) {
