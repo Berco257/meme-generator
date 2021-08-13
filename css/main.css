@@ -140,11 +140,11 @@ body {
 .create-meme {
     display: none;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .meme-tools {
     flex: 1;
-    border: 1px solid black;
     text-align: center;
     display: grid;
     grid-template-columns: repeat(5, 60px);
@@ -171,6 +171,7 @@ body {
 .meme-tools>.tool1 {
     grid-row: 1/2;
     grid-column: 1/-1;
+    align-self: flex-start;
 }
 
 .meme-tools>.tool1>input {
@@ -220,7 +221,7 @@ body {
 }
 
 .meme-tools>.tool15>a>img {
-    background-color: #71bae3;
+    background-color: #7fff66
 }
 
 /* SELECT FONTS */
@@ -258,9 +259,13 @@ body {
 }
 
 /* CANVAS */
-
+.canvas-container{
+    margin: 0;
+}
 canvas {
     display: block;
+    width: 100%;
+    box-shadow: 0 0 20px 0px;
 }
 
 /* FOOTER */
