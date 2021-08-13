@@ -19,11 +19,8 @@ function onMove(ev) {
     gCurrEvPos = getEvPos(ev);
     const line = getLineBelow();
 
-    if (!line) {
-        getElCanvas().style.cursor = 'auto';
-        return;
-    }
-    getElCanvas().style.cursor = 'pointer';
+    if(line) getElCanvas().style.cursor = 'pointer';
+    else if(!line && !gIsUserDrag) getElCanvas().style.cursor = 'auto';
     if (!gIsUserDrag) return;
     const difPos = { difX: gCurrEvPos.x - gLastEvPos.x, difY: gCurrEvPos.y - gLastEvPos.y };
     setLinePos(difPos);

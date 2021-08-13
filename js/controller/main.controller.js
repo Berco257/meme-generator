@@ -8,7 +8,7 @@ function init() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery();
-    // resizeCanvas();
+    resizeCanvas();
     addNewLine();
     renderCanvas();
     addListeners();
