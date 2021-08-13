@@ -78,6 +78,7 @@ function onShowGallery(ev) {
     ev.preventDefault();
     document.querySelector('.gallery').style.display = 'grid';
     document.querySelector('.create-meme').style.display = 'none';
+    onCloseMenu();
 }
 
 function onOpenMenu() {
