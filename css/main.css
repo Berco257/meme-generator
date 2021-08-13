@@ -72,16 +72,17 @@ html {
 
 body {
     margin: 0;
+    position: relative;
+    min-height: 100vh;
 }
 
 /* LAYOUT */
 
 .main-layout {
-    max-width: 900px;
-}
-
-.header-container, .main-content, .footer-container {
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
     margin: auto;
+    max-width: 650px;
 }
 
 /* HEADER */
@@ -100,6 +101,7 @@ body {
 
 .logo img {
     height: 50px;
+    width: 100%;
 }
 
 .main-nav {
@@ -107,6 +109,7 @@ body {
     gap: 25px;
     font-size: 1.875rem;
     font-family: montserrat-regular;
+    display: none;
 }
 
 .main-nav>li>a {
@@ -118,14 +121,14 @@ body {
 
 .main-content {
     margin-block-start: 20px;
-    margin-block-end: 20px;
+    padding-block-end: 125px;
 }
 
 /* GALLERY */
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(6, minmax(50px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 20px;
 }
 
@@ -135,11 +138,12 @@ body {
     cursor: pointer;
 }
 
-/* MEMES */
+/* MEMES TOOLS*/
 
 .create-meme {
     display: none;
     gap: 20px;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -147,7 +151,7 @@ body {
     flex: 1;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(5, 60px);
+    grid-template-columns: repeat(5, minmax(60px, 1fr));
     grid-template-rows: repeat(6, 60px);
     justify-content: center;
     align-items: center;
@@ -218,6 +222,7 @@ body {
     border: 1px solid black;
     border-radius: 8px;
     outline: 0;
+    font-size: 1.6rem;
 }
 
 .meme-tools>.tool15>a>img {
@@ -259,9 +264,13 @@ body {
 }
 
 /* CANVAS */
-.canvas-container{
+
+.canvas-container {
     margin: 0;
+    width: 100%;
+    /* height: 350px; */
 }
+
 canvas {
     display: block;
     box-shadow: 0 0 20px 0px;
@@ -270,9 +279,13 @@ canvas {
 /* FOOTER */
 
 footer {
+    min-height: 100px;
+    width: 100%;
     background-color: #ff7f00;
-    height: 80px;
     text-align: center;
+    font-family: impact;
+    position: absolute;
+    bottom: 0;
 }
 
 /* HELPERS */
@@ -285,4 +298,35 @@ footer {
 
 .flex {
     display: flex;
+}
+
+@media screen and (min-width: 700px) {
+    .main-layout {
+        max-width: 660px;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+    }
+    .main-nav {
+        display: flex;
+    }
+    .canvas-container {
+        width: 350px;
+        height: 350px;
+    }
+    .create-meme {
+        flex-wrap: nowrap;
+    }
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media screen and (min-width: 940px) {
+    .main-layout {
+        max-width: 900px;
+    }
+    .canvas-container {
+        width: 500px;
+        height: 500px;
+    }
 }

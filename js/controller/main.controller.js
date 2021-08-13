@@ -8,10 +8,10 @@ function init() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery();
-    resizeCanvas();
-    addNewLine();
-    renderCanvas();
+    // resizeCanvas();
+    // addNewLine();
     addListeners();
+    // renderCanvas();
 }
 
 function renderGallery() {
@@ -47,9 +47,9 @@ function renderTools() {
 }
 
 function resizeCanvas() {
-    // const elCanvasContainer = document.querySelector('.canvas-container');
-    gElCanvas.width = 540;
-    gElCanvas.height = 540;
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth;
+    gElCanvas.height = elContainer.offsetWidth;
 }
 
 function drawText(line) {
@@ -81,8 +81,10 @@ function onShowGallery(ev) {
 function onSetMemeImg(imgId) {
     getSetSelectedImgId(imgId);
     document.querySelector('.gallery').style.display = 'none';
-    renderCanvas();
     document.querySelector('.create-meme').style.display = 'flex';
+    resizeCanvas();
+    addNewLine();
+    renderCanvas();
 }
 
 function onSetLineTxt() {
