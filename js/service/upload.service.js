@@ -8,10 +8,9 @@ function onFacebookShare(ev) {
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        // document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
-
-        const link = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;`; 
-        window.open(link).focus();
+        document.querySelector('.meme-tools>.tool16>a>img').style.opacity = 1;
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;`; 
+        window.open(url, '_blank').focus();
     }
 }
 
@@ -19,7 +18,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
 
     const formData = new FormData();
     formData.append('img', imgDataUrl)
-
+    
     fetch('//ca-upload.com/here/upload.php', {
         method: 'POST',
         body: formData
@@ -30,6 +29,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
             onSuccess(url)
         })
         .catch((err) => {
+            document.querySelector('.meme-tools>.tool16>a>img').style.opacity = 0.3;
             console.error(err)
         })
 }
