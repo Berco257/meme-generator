@@ -20,14 +20,15 @@
                 <li class="flex"><a href="#" onclick="onCloseMenu()">X</a></li>
                 <li><a href="" onclick="onShowGallery(event)">Gallery</a></li>
                 <li><a href="" onclick="onShowMemes(event)">Memes</a></li>
-                <li>About</li>
+                <li><a href="" onclick="onShowAbout(event)">About</a></li>
             </ul>
         </div>
     </header>
 
     <main class="main-content main-layout">
         <div class="gallery"></div>
-        <div class="memes"></div>
+        <div class="memes">Your memes</div>
+        <div class="about">About</div>
         <div class="create-meme">
             <div class="canvas-container">
                 <canvas></canvas>
@@ -68,12 +69,12 @@
                     </select>
                 </div>
                 <div class="tool13">
-                    <img src="img/icons/text-stroke.png" alt="Stroke color">
                     <input type="color" title="Stroke color" oninput="onSetLineStrokeColor(this)">
+                    <img src="img/icons/text-stroke.png" alt="Stroke color">
                 </div>
                 <div class="tool14">
-                    <img src="img/icons/paint-board-and-brush.png" alt="Text color">
                     <input type="color" title="Text color" oninput="onSetLineTxtColor(this)">
+                    <img src="img/icons/paint-board-and-brush.png" alt="Text color">
                 </div>
                 <div class="tool15">
                     <a href="" download='my-meme' onclick="onDownloadImg(this)">

@@ -96,7 +96,7 @@ body {
     transition: opacity .6s;
 }
 
-.screen, .main-nav{
+.screen, .main-nav {
     z-index: 5
 }
 
@@ -219,9 +219,18 @@ body.screen-active .screen {
 
 .meme-tools>div img {
     height: 100%;
-    border: 1px solid black;
+    border: 0.1px solid black;
     border-radius: 8px;
     padding: 3px;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-color: #e0edff;
+}
+
+.meme-tools>div img:hover {
+    box-shadow: inset 1px 1px 2px 0px #000000;
+    position: relative;
+    left: -0.5px;
+    top: -0.5px;
 }
 
 .meme-tools>*>*:not(input), .screen {
@@ -258,6 +267,14 @@ body.screen-active .screen {
     height: 100%;
     opacity: 0;
     cursor: pointer;
+    z-index: 1;
+}
+
+.meme-tools>.tool13>input:hover~img {
+    box-shadow: inset 1px 1px 2px 0px #000000;
+    position: relative;
+    left: -0.5px;
+    top: -0.5px;
 }
 
 .meme-tools>.tool14 {
@@ -271,6 +288,14 @@ body.screen-active .screen {
     height: 100%;
     opacity: 0;
     cursor: pointer;
+    z-index: 1;
+}
+
+.meme-tools>.tool14>input:hover~img {
+    box-shadow: inset 1px 1px 2px 0px #000000;
+    position: relative;
+    left: -0.5px;
+    top: -0.5px;
 }
 
 .meme-tools>.tool1>input, .meme-tools>.tool12>select {
@@ -282,13 +307,14 @@ body.screen-active .screen {
 }
 
 .meme-tools>.tool15>a>img {
-    background-color: #7fff66
+    background-color: #ffe0e0
 }
 
-.meme-tools>.tool16>a>img{
+.meme-tools>.tool16>a>img {
     border: 0;
     padding: 0;
 }
+
 /* SELECT FONTS */
 
 .tool12>select>:nth-child(1) {

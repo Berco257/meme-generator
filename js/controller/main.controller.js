@@ -76,8 +76,39 @@ function drawSelectedLineFrame() {
 function onShowGallery(ev) {
     ev.preventDefault();
     document.querySelector('.gallery').style.display = 'grid';
+    document.querySelector('.memes').style.display = 'none';
+    document.querySelector('.about').style.display = 'none';
     document.querySelector('.create-meme').style.display = 'none';
     if(document.body.classList.contains('screen-active')) onCloseMenu();
+}
+
+function onShowMemes(ev) {
+    ev.preventDefault();
+    document.querySelector('.gallery').style.display = 'none';
+    document.querySelector('.memes').style.display = 'grid';
+    document.querySelector('.about').style.display = 'none';
+    document.querySelector('.create-meme').style.display = 'none';
+    if(document.body.classList.contains('screen-active')) onCloseMenu();
+}
+
+function onShowAbout(ev) {
+    ev.preventDefault();
+    document.querySelector('.gallery').style.display = 'none';
+    document.querySelector('.memes').style.display = 'none';
+    document.querySelector('.about').style.display = 'block';
+    document.querySelector('.create-meme').style.display = 'none';
+    if(document.body.classList.contains('screen-active')) onCloseMenu();
+}
+
+function onSetMemeImg(imgId) {
+    getSetSelectedImgId(imgId);
+    document.querySelector('.gallery').style.display = 'none';
+    document.querySelector('.memes').style.display = 'none';
+    document.querySelector('.about').style.display = 'none';
+    document.querySelector('.create-meme').style.display = 'flex';
+    resizeCanvas();
+    addNewLine();
+    renderCanvas();
 }
 
 function onOpenMenu() {
@@ -102,15 +133,6 @@ function onCloseMenu() {
 
 function toggleScreen() {
     document.body.classList.toggle('screen-active');
-}
-
-function onSetMemeImg(imgId) {
-    getSetSelectedImgId(imgId);
-    document.querySelector('.gallery').style.display = 'none';
-    document.querySelector('.create-meme').style.display = 'flex';
-    resizeCanvas();
-    addNewLine();
-    renderCanvas();
 }
 
 function onSetLineTxt() {
