@@ -2,7 +2,6 @@
 
 let gElCanvas;
 let gCtx;
-let gData;
 
 function init() {
     gElCanvas = document.querySelector('canvas');
@@ -31,13 +30,25 @@ function renderCanvas() {
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
-            gData = getElCanvas().toDataURL("image/jpeg");
+            gMeme.img = getElCanvas().toDataURL("image/jpeg");
             getLines().unshift(getLines().splice(getSetSelectedLineIdx(), 1)[0]);
             getSetSelectedLineIdx(0);
             drawText(getSelectedLine());
             drawSelectedLineFrame();
         }
     }
+}
+
+function renderMemes() {
+    const memes = getMemes();
+    const strHtmls = memes.map((meme, idx) => {
+        return `
+        <div class="saved-meme">
+            <img src=${meme.img} onclick="onClickUserMeme(${idx})">
+            <div class="remove-saved-meme" onclick="onRemoveSavedMeme(${idx})">❌</div>
+        </div>`;
+    }).join('');
+    document.querySelector('.memes').innerHTML = strHtmls;
 }
 
 function renderTools() {
@@ -79,16 +90,17 @@ function onShowGallery(ev) {
     document.querySelector('.memes').style.display = 'none';
     document.querySelector('.about').style.display = 'none';
     document.querySelector('.create-meme').style.display = 'none';
-    if(document.body.classList.contains('screen-active')) onCloseMenu();
+    if (document.body.classList.contains('screen-active')) onCloseMenu();
 }
 
 function onShowMemes(ev) {
     ev.preventDefault();
+    renderMemes();
     document.querySelector('.gallery').style.display = 'none';
     document.querySelector('.memes').style.display = 'grid';
     document.querySelector('.about').style.display = 'none';
     document.querySelector('.create-meme').style.display = 'none';
-    if(document.body.classList.contains('screen-active')) onCloseMenu();
+    if (document.body.classList.contains('screen-active')) onCloseMenu();
 }
 
 function onShowAbout(ev) {
@@ -97,7 +109,7 @@ function onShowAbout(ev) {
     document.querySelector('.memes').style.display = 'none';
     document.querySelector('.about').style.display = 'block';
     document.querySelector('.create-meme').style.display = 'none';
-    if(document.body.classList.contains('screen-active')) onCloseMenu();
+    if (document.body.classList.contains('screen-active')) onCloseMenu();
 }
 
 function onSetMemeImg(imgId) {
@@ -107,8 +119,23 @@ function onSetMemeImg(imgId) {
     document.querySelector('.about').style.display = 'none';
     document.querySelector('.create-meme').style.display = 'flex';
     resizeCanvas();
-    addNewLine();
+    if (!getLines().length) addNewLine();
     renderCanvas();
+}
+
+function onClickUserMeme(memeIdx) {
+    setMeme(memeIdx);
+    document.querySelector('.gallery').style.display = 'none';
+    document.querySelector('.memes').style.display = 'none';
+    document.querySelector('.about').style.display = 'none';
+    document.querySelector('.create-meme').style.display = 'flex';
+    resizeCanvas();
+    renderCanvas();
+}
+
+function onRemoveSavedMeme(idx) {
+    removeMeme(idx);
+    renderMemes();
 }
 
 function onOpenMenu() {
@@ -188,7 +215,16 @@ function onSetLineFont(el) {
 }
 
 function onDownloadImg(elLink) {
-    elLink.href = gData;
+    elLink.href = gMeme.img;
+}
+
+function onSaveMeme() {
+    saveMeme();
+    const elLabel = document.querySelector('.meme-tools>.tool17>label');
+    elLabel.style.display = 'unset';
+    setTimeout(() => {
+        elLabel.style.display = 'none';
+    }, 1000);
 }
 
 function disableEnableTxtInput(toggle) {

@@ -1,14 +1,28 @@
 'use strict';
 
 // let gKeywords = { 'happy': 12, 'funny puk': 1 };
-
+let gMemes = [];
 let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: -1,
+    img: '',
     lines: [],
 };
 
-function addNewLine(txt) {
+_loadMemes();
+
+function saveMeme() {
+    let meme = JSON.stringify(gMeme);
+    gMemes.push(JSON.parse(meme));
+    saveToStorage('memeDB', gMemes);
+}
+
+function removeMeme(idx){
+    gMemes.splice(idx, 1);
+    saveToStorage('memeDB', gMemes);
+}
+
+function addNewLine() {
     let newLine = {
         txt: 'I love memes!',
         size: 42,
@@ -83,6 +97,11 @@ function setLineFont(font) {
     getSelectedLine().font = font;
 }
 
+function setMeme(idx) {
+    let meme = JSON.stringify(gMemes[idx]);
+    gMeme = JSON.parse(meme);
+}
+
 function getSetLineTxt(txt) {
     if (getSetSelectedLineIdx() === -1) return;
     if (txt === undefined) return getSelectedLine().txt;
@@ -107,4 +126,14 @@ function getLines() {
 
 function getSelectedLine() {
     return gMeme.lines[getSetSelectedLineIdx()];
+}
+
+function getMemes() {
+    return gMemes;
+}
+
+function _loadMemes() {
+    gMemes = loadFromStorage('memeDB');
+    if (!gMemes) gMemes = []
+    saveToStorage('memeDB', gMemes);
 }

@@ -2,7 +2,7 @@
 
 function onFacebookShare(ev) {
     ev.preventDefault();
-    const imgDataUrl = gData;
+    const imgDataUrl = gMeme.img;
     doUploadImg(imgDataUrl, onSuccess);
 
     // A function to be called if request succeeds

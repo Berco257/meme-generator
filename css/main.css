@@ -174,7 +174,7 @@ body.screen-active .screen {
     padding-block-end: 125px;
 }
 
-/* GALLERY */
+/* GALLERY && MEMES*/
 
 .gallery {
     display: grid;
@@ -192,6 +192,42 @@ body.screen-active .screen {
 
 .gallery>img:hover {
     box-shadow: 0 0 15px 5px #995c1c;
+}
+
+/* MEMES */
+
+.memes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+}
+
+.memes>div {
+    position: relative;
+}
+
+.memes img {
+    object-fit: cover;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px #000000;
+}
+
+.memes img:hover {
+    box-shadow: 0 0 15px 5px #995c1c;
+}
+
+.saved-meme {
+    position: relative;
+}
+
+.remove-saved-meme {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* MEMES TOOLS*/
@@ -217,7 +253,7 @@ body.screen-active .screen {
     height: 40px;
 }
 
-.meme-tools>div img {
+.meme-tools>div img, .meme-tools>.tool17>button {
     height: 100%;
     border: 0.1px solid black;
     border-radius: 8px;
@@ -226,7 +262,7 @@ body.screen-active .screen {
     background-color: #e0edff;
 }
 
-.meme-tools>div img:hover {
+.meme-tools>div img:hover, .meme-tools>.tool17>button:hover {
     box-shadow: inset 1px 1px 2px 0px #000000;
     position: relative;
     left: -0.5px;
@@ -310,9 +346,30 @@ body.screen-active .screen {
     background-color: #ffe0e0
 }
 
+.meme-tools>.tool16 {
+    grid-row: 5/6;
+    grid-column: 2/4;
+}
+
 .meme-tools>.tool16>a>img {
     border: 0;
     padding: 0;
+    width: 83%;
+}
+
+.meme-tools>.tool17>button {
+    width: 40px;
+    font-weight: bold;
+    background-color: #e8ffe0;
+}
+.meme-tools>.tool17>label {
+    font-family: 'montserrat-regular';
+    font-size: 0.8rem;
+    color: black;
+    background-color: papayawhip;
+    font-weight: bold;
+    cursor: context-menu;
+    display: none;
 }
 
 /* SELECT FONTS */
@@ -421,7 +478,7 @@ footer {
     .create-meme {
         flex-wrap: nowrap;
     }
-    .gallery {
+    .gallery, .memes {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
