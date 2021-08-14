@@ -25,14 +25,12 @@ function renderCanvas() {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
         const lines = getLines();
         lines.forEach((line, idx) => {
-            if (idx === getSetSelectedLineIdx) return;
+            if (idx === getSetSelectedLineIdx()) return;
             drawText(line);
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
             gMeme.img = getElCanvas().toDataURL("image/jpeg");
-            getLines().unshift(getLines().splice(getSetSelectedLineIdx(), 1)[0]);
-            getSetSelectedLineIdx(0);
             drawText(getSelectedLine());
             drawSelectedLineFrame();
         }

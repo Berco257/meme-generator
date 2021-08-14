@@ -141,7 +141,7 @@ body.screen-active .screen {
     font-size: 1.875rem;
     font-family: montserrat-regular;
     background-color: #ff9a02e0;
-    box-shadow: -10px 0 20px 0 #322c2c;
+    box-shadow: 0 0 20px 10px #322c2c;
     transition: 0.4s;
 }
 
@@ -240,7 +240,8 @@ body.screen-active .screen {
 }
 
 /* ABOUT */
-.about{
+
+.about {
     display: none;
 }
 
@@ -371,6 +372,10 @@ body.screen-active .screen {
     width: 83%;
 }
 
+.meme-tools>.tool17 {
+    position: relative;
+}
+
 .meme-tools>.tool17>button {
     width: 40px;
     font-weight: bold;
@@ -385,6 +390,10 @@ body.screen-active .screen {
     font-weight: bold;
     cursor: context-menu;
     display: none;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
 }
 
 /* SELECT FONTS */
@@ -445,11 +454,25 @@ footer {
     font-family: impact;
     position: absolute;
     bottom: 0;
+    display: flex;
 }
 
+footer a {
+    text-decoration: none;
+    color: rgb(247, 252, 177);
+    transition: 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+footer>div{
+    font-size: 1.3rem;
+}
 /* TRANS */
 
-.he-font{
+.he-font {
     font-family: varela-round !important;
 }
 
