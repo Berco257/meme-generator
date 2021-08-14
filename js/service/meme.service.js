@@ -1,6 +1,5 @@
 'use strict';
 
-// let gKeywords = { 'happy': 12, 'funny puk': 1 };
 let gMemes = [];
 let gMeme = {
     selectedImgId: 1,

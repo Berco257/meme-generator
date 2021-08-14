@@ -10,8 +10,8 @@ function init() {
     addListeners();
 }
 
-function renderGallery() {
-    const imgs = getImgs();
+function renderGallery(strSearch) {
+    const imgs = getImgsForDisplay(strSearch);
     const strHtmls = imgs.map(img => {
         return `<img src=${img.url} onclick="onSetMemeImg(${img.id})">`;
     }).join('');
@@ -97,9 +97,13 @@ function onSetLang(lang) {
     doTrans();
     if (document.body.classList.contains('screen-active')) onCloseMenu();
 }
+function onFilterGallery(el) {
+    renderGallery(el.value);
+}
 
 function onShowGallery(ev) {
     ev.preventDefault();
+    document.querySelector('.search').style.display = 'inline-block';
     document.querySelector('.gallery').style.display = 'grid';
     document.querySelector('.memes').style.display = 'none';
     document.querySelector('.about').style.display = 'none';
@@ -110,6 +114,7 @@ function onShowGallery(ev) {
 function onShowMemes(ev) {
     ev.preventDefault();
     renderMemes();
+    document.querySelector('.search').style.display = 'none';
     document.querySelector('.gallery').style.display = 'none';
     document.querySelector('.memes').style.display = 'grid';
     document.querySelector('.about').style.display = 'none';
@@ -119,6 +124,7 @@ function onShowMemes(ev) {
 
 function onShowAbout(ev) {
     ev.preventDefault();
+    document.querySelector('.search').style.display = 'none';
     document.querySelector('.gallery').style.display = 'none';
     document.querySelector('.memes').style.display = 'none';
     document.querySelector('.about').style.display = 'block';
@@ -128,6 +134,7 @@ function onShowAbout(ev) {
 
 function onSetMemeImg(imgId) {
     getSetSelectedImgId(imgId);
+    document.querySelector('.search').style.display = 'none';
     document.querySelector('.gallery').style.display = 'none';
     document.querySelector('.memes').style.display = 'none';
     document.querySelector('.about').style.display = 'none';
@@ -139,6 +146,7 @@ function onSetMemeImg(imgId) {
 
 function onClickUserMeme(memeIdx) {
     setMeme(memeIdx);
+    document.querySelector('.search').style.display = 'none';
     document.querySelector('.gallery').style.display = 'none';
     document.querySelector('.memes').style.display = 'none';
     document.querySelector('.about').style.display = 'none';
@@ -154,7 +162,7 @@ function onRemoveSavedMeme(idx) {
 
 function onOpenMenu() {
     const elMainNav = document.querySelector('.main-nav');
-    if(elMainNav.classList.contains('rtl-nav')){
+    if (elMainNav.classList.contains('rtl-nav')) {
         elMainNav.style.right = 'unset';
         elMainNav.style.left = '0';
     }
@@ -162,7 +170,7 @@ function onOpenMenu() {
         elMainNav.style.right = '0';
         elMainNav.style.left = 'unset';
     }
-    
+
     const elOpenMenuBtn = document.querySelector('.open-menu');
     elOpenMenuBtn.style.opacity = 0;
     const elCloseMenuBtn = document.querySelector('.main-nav>li:first-child>a');
@@ -172,7 +180,7 @@ function onOpenMenu() {
 
 function onCloseMenu() {
     const elMainNav = document.querySelector('.main-nav');
-    if(elMainNav.classList.contains('rtl-nav')){
+    if (elMainNav.classList.contains('rtl-nav')) {
         elMainNav.style.right = 'unset';
         elMainNav.style.left = '-200px';
     }
@@ -180,7 +188,7 @@ function onCloseMenu() {
         elMainNav.style.right = '-200px';
         elMainNav.style.left = 'unset';
     }
-    
+
     const elOpenMenuBtn = document.querySelector('.open-menu');
     elOpenMenuBtn.style.opacity = 1;
     const elCloseMenuBtn = document.querySelector('.main-nav>li:first-child>a');

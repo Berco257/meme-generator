@@ -176,6 +176,32 @@ body.screen-active .screen {
     transition: 1.5s;
 }
 
+/* SEARCH */
+
+.search {
+    margin-block-end: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.search>input {
+    height: 30px;
+    width: 200px;
+    font-size: 1rem;
+    border: 0;
+    border-block-end: 1.5px solid black;
+}
+
+.search>input:focus-visible {
+    outline: 0;
+}
+
+.search>img {
+    position: absolute;
+    right: -15;
+    height: 100%;
+}
+
 /* MAIN CONTENT */
 
 .main-content {
@@ -467,9 +493,10 @@ footer a:hover {
     color: #ffffff;
 }
 
-footer>div{
+footer>div {
     font-size: 1.3rem;
 }
+
 /* TRANS */
 
 .he-font {
