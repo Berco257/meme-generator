@@ -162,6 +162,10 @@ body.screen-active .screen {
     transition: 1s;
 }
 
+.main-nav>li:not(:first-child)>a:hover {
+    color: #000000;;
+}
+
 .main-nav>li>select {
     background-color: #ffefdf;
     border-radius: 5px;
