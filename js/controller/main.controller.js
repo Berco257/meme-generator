@@ -30,8 +30,8 @@ function renderCanvas() {
         });
         if (getSetSelectedLineIdx() !== -1) {
             renderTools();
-            gMeme.img = getElCanvas().toDataURL("image/jpeg");
             drawText(getSelectedLine());
+            gMeme.img = getElCanvas().toDataURL("image/jpeg");
             drawSelectedLineFrame();
         }
     }
