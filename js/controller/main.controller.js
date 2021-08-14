@@ -84,6 +84,22 @@ function drawSelectedLineFrame() {
     gCtx.stroke();
 }
 
+
+function onSetLang(lang) {
+    setLang(lang);
+    if (lang === 'he') {
+        document.body.classList.add('rtl')
+        document.querySelector('.main-nav').classList.add('he-font');
+        document.querySelector('.main-nav').classList.add('rtl-nav');
+    } else {
+        document.body.classList.remove('rtl')
+        document.querySelector('.main-nav').classList.remove('he-font');
+        document.querySelector('.main-nav').classList.remove('rtl-nav');
+    }
+    doTrans();
+    if (document.body.classList.contains('screen-active')) onCloseMenu();
+}
+
 function onShowGallery(ev) {
     ev.preventDefault();
     document.querySelector('.gallery').style.display = 'grid';
@@ -140,7 +156,15 @@ function onRemoveSavedMeme(idx) {
 
 function onOpenMenu() {
     const elMainNav = document.querySelector('.main-nav');
-    elMainNav.style.right = '0';
+    if(elMainNav.classList.contains('rtl-nav')){
+        elMainNav.style.right = 'unset';
+        elMainNav.style.left = '0';
+    }
+    else {
+        elMainNav.style.right = '0';
+        elMainNav.style.left = 'unset';
+    }
+    
     const elOpenMenuBtn = document.querySelector('.open-menu');
     elOpenMenuBtn.style.opacity = 0;
     const elCloseMenuBtn = document.querySelector('.main-nav>li:first-child>a');
@@ -150,7 +174,15 @@ function onOpenMenu() {
 
 function onCloseMenu() {
     const elMainNav = document.querySelector('.main-nav');
-    elMainNav.style.right = '-200px';
+    if(elMainNav.classList.contains('rtl-nav')){
+        elMainNav.style.right = 'unset';
+        elMainNav.style.left = '-200px';
+    }
+    else {
+        elMainNav.style.right = '-200px';
+        elMainNav.style.left = 'unset';
+    }
+    
     const elOpenMenuBtn = document.querySelector('.open-menu');
     elOpenMenuBtn.style.opacity = 1;
     const elCloseMenuBtn = document.querySelector('.main-nav>li:first-child>a');

@@ -18,16 +18,22 @@
             <div class="open-menu" onclick="onOpenMenu()">&#9776</div>
             <ul class="main-nav clean-list">
                 <li class="flex"><a href="#" onclick="onCloseMenu()">X</a></li>
-                <li><a href="" onclick="onShowGallery(event)">Gallery</a></li>
-                <li><a href="" onclick="onShowMemes(event)">Memes</a></li>
-                <li><a href="" onclick="onShowAbout(event)">About</a></li>
+                <li><a href="" onclick="onShowGallery(event)" data-trans="gallery">Gallery</a></li>
+                <li><a href="" onclick="onShowMemes(event)" data-trans="memes">Memes</a></li>
+                <li><a href="" onclick="onShowAbout(event)" data-trans="about">About</a></li>
+                <li>
+                    <select onchange="onSetLang(this.value)">
+                        <option value="en">English</option>
+                        <option value="he">עברית</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </header>
 
     <main class="main-content main-layout">
         <div class="gallery"></div>
-        <div class="memes">Your memes</div>
+        <div class="memes"></div>
         <div class="about">About</div>
         <div class="create-meme">
             <div class="canvas-container">
@@ -83,13 +89,12 @@
                 </div>
                 <div class="tool16">
                     <a onclick="onFacebookShare(event)" href="">
-                        <img src="img/icons/fb-share.png" alt="Share on facebook"
-                        title="Share on facebook">
+                        <img src="img/icons/fb-share.png" alt="Share on facebook" title="Share on facebook">
                     </a>
                 </div>
                 <div class="tool17">
-                    <button onclick="onSaveMeme()">Save</button>
-                    <label>saved!</label>
+                    <button onclick="onSaveMeme()"  data-trans="save">Save</button>
+                    <label data-trans="saved">saved!</label>
                 </div>
             </div>
         </div>
@@ -100,6 +105,7 @@
     </footer>
 
     <script src="js/service/storage.service.js"></script>
+    <script src="js/service/i18n.service.js"></script>
     <script src="js/service/upload.service.js"></script>
     <script src="js/service/img.service.js"></script>
     <script src="js/service/meme.service.js"></script>

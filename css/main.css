@@ -76,6 +76,10 @@ body {
     min-height: 100vh;
 }
 
+body.rtl {
+    direction: rtl;
+}
+
 /* LAYOUT */
 
 .main-layout {
@@ -131,7 +135,6 @@ body.screen-active .screen {
     height: 100%;
     position: fixed;
     top: 0;
-    /* לשים ב 0*/
     right: -200px;
     align-items: center;
     gap: 40px;
@@ -159,6 +162,12 @@ body.screen-active .screen {
     transition: 1s;
 }
 
+.main-nav>li>select {
+    background-color: #ffefdf;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .open-menu {
     font-size: 3.5rem;
     color: #000000;
@@ -174,7 +183,7 @@ body.screen-active .screen {
     padding-block-end: 125px;
 }
 
-/* GALLERY && MEMES*/
+/* GALLERY*/
 
 .gallery {
     display: grid;
@@ -197,7 +206,7 @@ body.screen-active .screen {
 /* MEMES */
 
 .memes {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 20px;
 }
@@ -228,6 +237,11 @@ body.screen-active .screen {
     left: 0;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+/* ABOUT */
+.about{
+    display: none;
 }
 
 /* MEMES TOOLS*/
@@ -362,6 +376,7 @@ body.screen-active .screen {
     font-weight: bold;
     background-color: #e8ffe0;
 }
+
 .meme-tools>.tool17>label {
     font-family: 'montserrat-regular';
     font-size: 0.8rem;
@@ -432,6 +447,12 @@ footer {
     bottom: 0;
 }
 
+/* TRANS */
+
+.he-font{
+    font-family: varela-round !important;
+}
+
 /* HELPERS */
 
 .clean-list {
@@ -457,9 +478,10 @@ footer {
         position: unset;
         top: unset;
         right: unset;
+        left: unset;
         align-items: center;
         gap: 25px;
-        font-size: 1.875rem;
+        font-size: 1.5rem;
         font-family: montserrat-regular;
         background-color: unset;
         box-shadow: unset;
