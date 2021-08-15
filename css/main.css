@@ -288,14 +288,15 @@ body.screen-active .screen {
     flex: 1;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(5, minmax(60px, 1fr));
-    grid-template-rows: repeat(6, 60px);
-    justify-content: center;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(5, 50px);
     align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .meme-tools>div {
-    height: 40px;
+    height: 100%;
 }
 
 .meme-tools>div img, .meme-tools>.tool17>button {
@@ -325,7 +326,7 @@ body.screen-active .screen {
 }
 
 .meme-tools>.tool1>input {
-    width: 93%;
+    width: 100%
 }
 
 .meme-tools>.tool12 {
@@ -334,7 +335,7 @@ body.screen-active .screen {
 }
 
 .meme-tools>.tool12>select {
-    width: 88%;
+    width: 100%;
 }
 
 .meme-tools>.tool13 {
@@ -399,7 +400,7 @@ body.screen-active .screen {
 .meme-tools>.tool16>a>img {
     border: 0;
     padding: 0;
-    width: 83%;
+    width: 100%;
 }
 
 .meme-tools>.tool17 {
@@ -407,7 +408,7 @@ body.screen-active .screen {
 }
 
 .meme-tools>.tool17>button {
-    width: 40px;
+    width: 100%;
     font-weight: bold;
     background-color: #e8ffe0;
 }
@@ -543,6 +544,9 @@ footer>div {
     }
     .main-nav>li:first-child {
         display: none;
+    }
+    .meme-tools{
+        text-align: end;
     }
     .open-menu {
         display: none;

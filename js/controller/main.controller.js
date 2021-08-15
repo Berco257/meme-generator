@@ -50,10 +50,14 @@ function renderMemes() {
 }
 
 function renderTools() {
-    document.querySelector('.tool1 .txt').value = getSetLineTxt();
-    document.querySelector('.tool12 select').value = getSelectedLine().font;
-    document.querySelector('.tool13 input').value = getSelectedLine().strokeColor;
-    document.querySelector('.tool14 input').value = getSelectedLine().txtColor;
+    const line = getSelectedLine();
+    document.querySelector('.tool1 .txt').value = line.txt;
+    document.querySelector('.tool12 select').value = line.font;
+    document.querySelector('.tool13 input').value = line.strokeColor;
+    document.querySelector('.tool13 img').style.backgroundColor = line.strokeColor;
+    document.querySelector('.tool14 input').value = line.txtColor;
+    document.querySelector('.tool14 img').style.backgroundColor = line.txtColor;
+
 }
 
 function resizeCanvas() {
