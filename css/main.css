@@ -163,13 +163,18 @@ body.screen-active .screen {
 }
 
 .main-nav>li:not(:first-child)>a:hover {
-    color: #000000;;
+    color: #000000;
+    ;
 }
 
 .main-nav>li>select {
     background-color: #ffefdf;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.main-nav .trans {
+    display: flex;
 }
 
 .open-menu {
@@ -545,7 +550,7 @@ footer>div {
     .main-nav>li:first-child {
         display: none;
     }
-    .meme-tools{
+    .meme-tools {
         text-align: end;
     }
     .open-menu {
